@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import UserComment from './UserComment'
 
 class Review extends Component {
     constructor() {

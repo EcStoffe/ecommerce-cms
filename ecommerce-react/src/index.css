@@ -32,3 +32,8 @@ img {
 li {
     list-style-type: none;
 }
+
+.cartItem {
+    margin: 25px;
+    padding: 0;
+}

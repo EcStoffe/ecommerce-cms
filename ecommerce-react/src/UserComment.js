@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-class UserComment  extends Component {
+class UserComment extends Component {
     constructor(props) {
         super(props);
         this.setState = {
@@ -13,11 +13,9 @@ class UserComment  extends Component {
             .then(data => console.log(JSON.stringify(data)))
             .catch(error => console.error(error));
 
-    function postData(url = ``, data = {}) {
+    function postData(url = "http://localhost:1337/comments/", data = {data}) {
         return fetch(url, {
             method: "POST",
-            headers:
-
         })
     }
     }

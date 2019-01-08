@@ -9,7 +9,7 @@ class router extends Component {
         return (
             <BrowserRouter>
                 <Switch>
-                    <Route path="/product/:id" component={Prodspec} />
+                    <Route path="/product/:_id" component={Prodspec} />
                     <Route path="/" component={App}  />
                 </Switch>
             </BrowserRouter>
