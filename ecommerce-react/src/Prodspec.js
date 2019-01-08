@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Review from "./Review";
-import UserComment from "./UserComment";
+import {NavLink} from "react-router-dom";
+
 
 class Prodspec extends Component {
     constructor() {
@@ -10,33 +10,34 @@ class Prodspec extends Component {
         }
     }
     componentDidMount() {
-        const id = this.props.match.params.id;
+        const id = this.props.match.params._id;
+        const url = "http://192.168.99.100:8083/api/collections/get/Products?token=account-f71e27ff51498b0fff2224685b1969&filter[_id]="+id;
 
-        fetch("http://localhost:1337/products/"+id)
+        fetch(url)
             .then((collections) => collections.json())
             .then((data) => {
                 this.setState({
-                    product: data
+                    product: data.entries[0]
                 })
             })
     }
     render ()
     {
-        console.log(this.state.product);
         const product = this.state.product;
-
-        if (!product)
+        if (!this.state.product) {
             return null;
+        }
+
 
         return (
-            <div>
+            <NavLink to={"/product/"+product._id}>
                 <h2>{product.Name}</h2>
-                <p>{product.Price}$</p>
+                <p>{product.Price}</p>
                 <p>{product.Description}</p>
-                <p>In Stock: {product.Stock}</p>
-                <Review reviews={product.reviews}/>
-                <UserComment id={this.props.id} updateReview={this.props.review}/>
-            </div>
+                <p>{product.Stock}</p>
+                {/*<Review reviews={product.reviews}/>
+                <UserComment id={this.props._id} updateReview={this.props.review}/>*/}
+            </NavLink>
         )
     }
 }
